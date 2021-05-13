@@ -15,10 +15,12 @@ class OneKeyArticle(Resource):
 
     def put(self):
         try:
-            print(request.data)
+            # print(request.data)
             buff = json.loads(request.data)['data']
-            print(buff)
-            new_buff = my_api.api_main(buff)
+            deep = json.loads(request.data)['deep']
+            print('buff:', buff)
+            print('deep:', deep)
+            new_buff = my_api.api_main(buff, deep)
             print(new_buff)
             return {'data': new_buff}
         except Exception as error:
